@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/startnav.xml"
+    tools:ignore="UnusedNavigation"
+    app:startDestination="@id/dashBoardFragment">
+    <fragment
+        android:id="@+id/moreInfoFragment3"
+        android:name="com.preet.covid19tracker_20.MoreInfoFragment"
+        android:label="fragment_more_info"
+        tools:layout="@layout/fragment_more_info" />
+    <fragment
+        android:id="@+id/dashBoardFragment"
+        android:name="com.preet.covid19tracker_20.DashboardFragment"
+        android:label="fragment_more_info"
+        tools:layout="@layout/activity_main" >
+        <action
+            android:id="@+id/action_dashBoardFragment_to_moreInfoFragment3"
+            app:destination="@id/moreInfoFragment3" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.preet.covid19tracker_20.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" />
+</navigation>

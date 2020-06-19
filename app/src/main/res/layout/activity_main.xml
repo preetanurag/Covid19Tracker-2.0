@@ -23,7 +23,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/infobtn"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:layout_marginEnd="16dp"
@@ -44,7 +44,7 @@
         android:text="        Covid-19 Tracker"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@+id/infobtn"
         app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -316,17 +316,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
-        android:id="@+id/textView23"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="view all"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.878"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
-
-    <TextView
         android:id="@+id/textView24"
         android:layout_width="match_parent"
         android:layout_height="3dp"
@@ -339,4 +328,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
