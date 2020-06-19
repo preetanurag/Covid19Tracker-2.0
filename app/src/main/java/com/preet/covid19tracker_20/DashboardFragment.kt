@@ -30,6 +30,9 @@ class DashboardFragment : Fragment() {
         infobtn.setOnClickListener {
             navController.navigate(R.id.action_dashBoardFragment_to_infoFragment)
         }
+        helplinebtn.setOnClickListener {
+            navController.navigate(R.id.action_dashBoardFragment_to_helplineFragment)
+        }
     }
 
 }

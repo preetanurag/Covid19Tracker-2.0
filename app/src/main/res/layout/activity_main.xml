@@ -50,7 +50,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/helplinebtn"
         android:layout_width="141dp"
         android:layout_height="45dp"
         android:layout_marginBottom="24dp"
@@ -83,11 +83,11 @@
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
+        app:layout_constraintBottom_toBottomOf="@+id/helplinebtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toTopOf="@+id/button" />
+        app:layout_constraintStart_toEndOf="@+id/helplinebtn"
+        app:layout_constraintTop_toTopOf="@+id/helplinebtn" />
 
     <TextView
         android:id="@+id/textView4"
@@ -203,7 +203,7 @@
         android:layout_marginBottom="16dp"
         android:layout_weight="4"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/helplinebtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

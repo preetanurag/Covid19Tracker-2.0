@@ -1,59 +1,102 @@
 package com.preet.covid19tracker_20
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.leo.simplearcloader.SimpleArcLoader
+import kotlinx.android.synthetic.main.fragment_helpline.*
+import org.json.JSONException
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HelplineFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HelplineFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private val recyclerView: RecyclerView
+        get() = recycler_help_no
+
+    private val requestQueue  by lazy {
+        Volley.newRequestQueue(context)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+  private val simpleArcLoader: SimpleArcLoader
+       get() = progressBar
+
+
+    private  var helpData: Array<HelplineModel> = arrayOf()
+
+
+
+
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_helpline, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HelplineFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HelplineFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onResume() {
+        super.onResume()
+
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        parseJson()
+
+
     }
+
+    private fun parseJson() {
+
+       simpleArcLoader.start()
+        val url = "https://api.rootnet.in/covid19-in/contacts"
+        val request = JsonObjectRequest(
+            Request.Method.GET, url, null,
+            Response.Listener { response ->
+                try {
+                    val array = response.getJSONObject("data").getJSONObject("contacts").getJSONArray("regional")
+                    val gsonBuilder = GsonBuilder()
+                    val gson: Gson = gsonBuilder.create()
+                    helpData = gson.fromJson(
+                        array.toString(),
+                        Array<HelplineModel>::class.java
+                    )
+
+                    simpleArcLoader.stop()
+                    simpleArcLoader.visibility = View.GONE
+                    recyclerView.adapter = HelplineAdapter(helpData).apply {
+                        onClickListener={number->
+                            val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + Uri.encode(number)))
+                            startActivity(intent)
+                        }
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                    simpleArcLoader.stop()
+                    simpleArcLoader.visibility = View.GONE
+                }
+            },
+            Response.ErrorListener {error ->
+                simpleArcLoader.stop()
+                simpleArcLoader.visibility = View.GONE
+
+                Toast.makeText(context, error.message, Toast.LENGTH_SHORT).show()
+            }
+        )
+        requestQueue?.add(request)
+    }
+
+
+
 }
+
