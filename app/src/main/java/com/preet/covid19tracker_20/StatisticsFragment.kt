@@ -1,5 +1,6 @@
 package com.preet.covid19tracker_20
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -38,8 +39,17 @@ class StatisticsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_statistics, container, false)
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onResume() {
         super.onResume()
+
+        moredeatils.setOnClickListener {
+            navController.navigate(R.id.action_statisticsFragment_to_moreDetailsFragment)
+        }
+        global.setOnClickListener {
+
+            navController.navigate(R.id.action_statisticsFragment_to_globalFragment)
+        }
 
 
 
@@ -81,7 +91,7 @@ class StatisticsFragment : Fragment() {
         requestQueue!!.add(request)
     }
 
-    
+
 
 }
 

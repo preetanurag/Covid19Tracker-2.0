@@ -125,7 +125,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/india"
         android:layout_width="0dp"
         android:layout_height="35dp"
         android:layout_marginStart="32dp"
@@ -135,26 +135,26 @@
         android:text="My Country"
         android:textAllCaps="false"
         android:textColor="#000000"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
+        app:layout_constraintEnd_toStartOf="@+id/global"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/global"
         android:layout_width="0dp"
         android:layout_height="35dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/statistic_button"
+        android:background="@drawable/send_sms_button"
         android:text="Global"
         android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/button3"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/india"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toTopOf="@+id/button3" />
+        app:layout_constraintStart_toEndOf="@+id/india"
+        app:layout_constraintTop_toTopOf="@+id/india" />
 
     <TextView
         android:id="@+id/textView8"
@@ -169,7 +169,7 @@
         app:layout_constraintEnd_toStartOf="@+id/textView9"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/india" />
 
     <TextView
         android:id="@+id/textView9"

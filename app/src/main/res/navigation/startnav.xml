@@ -50,5 +50,34 @@
         android:id="@+id/statisticsFragment"
         android:name="com.preet.covid19tracker_20.StatisticsFragment"
         android:label="fragment_statistics"
-        tools:layout="@layout/fragment_statistics" />
+        tools:layout="@layout/fragment_statistics" >
+        <action
+            android:id="@+id/action_statisticsFragment_to_moreDetailsFragment"
+            app:destination="@id/moreDetailsFragment" />
+        <action
+            android:id="@+id/action_statisticsFragment_to_globalFragment"
+            app:destination="@id/globalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/moreDetailsFragment"
+        android:name="com.preet.covid19tracker_20.MoreDetailsFragment"
+        android:label="fragment_more_details"
+        tools:layout="@layout/fragment_more_details" >
+        <action
+            android:id="@+id/action_moreDetailsFragment_to_stateFragment"
+            app:destination="@id/stateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/globalFragment"
+        android:name="com.preet.covid19tracker_20.GlobalFragment"
+        android:label="GlobalFragment" >
+        <action
+            android:id="@+id/action_globalFragment_to_statisticsFragment"
+            app:destination="@id/statisticsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/stateFragment"
+        android:name="com.preet.covid19tracker_20.StateFragment"
+        android:label="fragment_state"
+        tools:layout="@layout/fragment_state" />
 </navigation>
