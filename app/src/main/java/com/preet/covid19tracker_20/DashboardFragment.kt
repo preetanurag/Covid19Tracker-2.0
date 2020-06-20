@@ -33,6 +33,9 @@ class DashboardFragment : Fragment() {
         helplinebtn.setOnClickListener {
             navController.navigate(R.id.action_dashBoardFragment_to_helplineFragment)
         }
+        riskbtn.setOnClickListener {
+            navController.navigate(R.id.action_dashBoardFragment_to_riskFragment)
+        }
     }
 
 }

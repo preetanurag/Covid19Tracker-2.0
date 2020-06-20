@@ -1,7 +1,5 @@
 package com.preet.covid19tracker_20
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
+import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -19,33 +18,34 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.leo.simplearcloader.SimpleArcLoader
 import kotlinx.android.synthetic.main.fragment_helpline.*
+import kotlinx.android.synthetic.main.fragment_helpline.progressBar
+import kotlinx.android.synthetic.main.fragment_risk.*
 import org.json.JSONException
 
 
-class HelplineFragment : Fragment() {
+class RiskFragment : Fragment() {
 
     private val recyclerView: RecyclerView
-        get() = recycler_help_no
+        get() = recycler1
 
     private val requestQueue  by lazy {
         Volley.newRequestQueue(context)
     }
 
-  private val simpleArcLoader: SimpleArcLoader
-       get() = progressBar
+    private val simpleArcLoader: SimpleArcLoader
+        get() = progressBar
+
+    private lateinit var zoneData: Array<RiskModel>
 
 
-    private  var helpData: Array<HelplineModel> = arrayOf()
-
-
-
-
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_helpline, container, false)
+        return inflater.inflate(R.layout.fragment_risk, container, false)
     }
+
 
     override fun onResume() {
         super.onResume()
@@ -53,52 +53,48 @@ class HelplineFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         parseJson()
 
-        helpline_back_btn.setOnClickListener {
+        risk_back_btn.setOnClickListener {
             findNavController().navigateUp()
         }
-    }
 
+
+    }
     private fun parseJson() {
 
-       simpleArcLoader.start()
-        val url = "https://api.rootnet.in/covid19-in/contacts"
+        simpleArcLoader!!.start()
+
+        val url = "https://api.covid19india.org/zones.json"
         val request = JsonObjectRequest(
             Request.Method.GET, url, null,
             Response.Listener { response ->
                 try {
-                    val array = response.getJSONObject("data").getJSONObject("contacts").getJSONArray("regional")
+                    val array = response.getJSONArray("zones")
                     val gsonBuilder = GsonBuilder()
                     val gson: Gson = gsonBuilder.create()
-                    helpData = gson.fromJson(
+                    zoneData = gson.fromJson(
                         array.toString(),
-                        Array<HelplineModel>::class.java
+                        Array<RiskModel>::class.java
                     )
+                    simpleArcLoader!!.stop()
+                    simpleArcLoader!!.visibility = View.GONE
 
-                    simpleArcLoader.stop()
-                    simpleArcLoader.visibility = View.GONE
-                    recyclerView.adapter = HelplineAdapter(helpData).apply {
-                        onClickListener={number->
-                            val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + Uri.encode(number)))
-                            startActivity(intent)
-                        }
-                    }
-
+                    recyclerView?.adapter = RiskAdapter(zoneData)
                 } catch (e: JSONException) {
                     e.printStackTrace()
-                    simpleArcLoader.stop()
-                    simpleArcLoader.visibility = View.GONE
+                    simpleArcLoader!!.stop()
+                    simpleArcLoader!!.visibility = View.GONE
+
                 }
             },
             Response.ErrorListener {error ->
-                simpleArcLoader.stop()
-                simpleArcLoader.visibility = View.GONE
-
+                simpleArcLoader!!.stop()
+                simpleArcLoader!!.visibility = View.GONE
                 Toast.makeText(context, error.message, Toast.LENGTH_SHORT).show()
+
             }
         )
         requestQueue?.add(request)
     }
-
 
 
 }

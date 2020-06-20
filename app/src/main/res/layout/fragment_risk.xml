@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#473F97"
-    tools:context=".HelplineFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".RiskFragment">
 
     <TextView
         android:id="@+id/textView8"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/graphikregular"
-        android:text="Help Line No"
+        android:text="District wise zone"
         android:textColor="#FFF"
         android:textColorLink="#FFFFFF"
         android:textSize="27sp"
@@ -21,6 +21,19 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         />
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView8"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="20dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <com.leo.simplearcloader.SimpleArcLoader
         android:id="@+id/progressBar"
@@ -35,27 +48,15 @@
 
     </com.leo.simplearcloader.SimpleArcLoader>
 
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_help_no"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/textView8"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="20dp"/>
-
     <ImageView
-        android:id="@+id/helpline_back_btn"
+        android:id="@+id/risk_back_btn"
         android:layout_width="35dp"
         android:layout_height="32dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="13dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginEnd="42dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="70dp"
+        android:layout_marginLeft="13dp"
         android:layout_toStartOf="@+id/textView8"
         android:src="@drawable/back" />
 
