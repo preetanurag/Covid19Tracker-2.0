@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_dashBoardFragment_to_riskFragment"
             app:destination="@id/riskFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_statisticsFragment"
+            app:destination="@id/statisticsFragment" />
     </fragment>
     <fragment
         android:id="@+id/infoFragment"
@@ -43,4 +46,9 @@
         android:name="com.preet.covid19tracker_20.RiskFragment"
         android:label="fragment_risk"
         tools:layout="@layout/fragment_risk" />
+    <fragment
+        android:id="@+id/statisticsFragment"
+        android:name="com.preet.covid19tracker_20.StatisticsFragment"
+        android:label="fragment_statistics"
+        tools:layout="@layout/fragment_statistics" />
 </navigation>

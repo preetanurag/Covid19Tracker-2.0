@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_statistics.*
 
 
 class DashboardFragment : Fragment() {
@@ -35,6 +36,9 @@ class DashboardFragment : Fragment() {
         }
         riskbtn.setOnClickListener {
             navController.navigate(R.id.action_dashBoardFragment_to_riskFragment)
+        }
+        stat.setOnClickListener {
+            navController.navigate(R.id.action_dashBoardFragment_to_statisticsFragment)
         }
     }
 
