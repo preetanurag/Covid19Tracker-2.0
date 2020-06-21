@@ -57,6 +57,9 @@
         <action
             android:id="@+id/action_statisticsFragment_to_globalFragment"
             app:destination="@id/globalFragment" />
+        <action
+            android:id="@+id/action_statisticsFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
     </fragment>
     <fragment
         android:id="@+id/moreDetailsFragment"
@@ -74,10 +77,18 @@
         <action
             android:id="@+id/action_globalFragment_to_statisticsFragment"
             app:destination="@id/statisticsFragment" />
+        <action
+            android:id="@+id/action_globalFragment_to_affectedCountriesFragment"
+            app:destination="@id/affectedCountriesFragment" />
     </fragment>
     <fragment
         android:id="@+id/stateFragment"
         android:name="com.preet.covid19tracker_20.StateFragment"
         android:label="fragment_state"
         tools:layout="@layout/fragment_state" />
+    <fragment
+        android:id="@+id/affectedCountriesFragment"
+        android:name="com.preet.covid19tracker_20.AffectedCountriesFragment"
+        android:label="fragment_affected_countries"
+        tools:layout="@layout/fragment_affected_countries" />
 </navigation>

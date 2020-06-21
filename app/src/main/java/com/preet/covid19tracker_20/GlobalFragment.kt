@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
@@ -42,11 +43,16 @@ class GlobalFragment : Fragment() {
        india.setOnClickListener {
            navController.navigate(R.id.action_globalFragment_to_statisticsFragment)
        }
+        stat_backbtn.setOnClickListener {
+            findNavController().navigateUp()
+        }
+        moredeatils.setOnClickListener {
+            navController.navigate(R.id.action_globalFragment_to_affectedCountriesFragment)
+        }
         fetchData()
     }
     private fun fetchData() {
         val url = "https://corona.lmao.ninja/v2/all/"
-      //  simpleArcLoader.start()
         val request = StringRequest(
             Request.Method.GET, url,
             Response.Listener { response ->
@@ -54,23 +60,22 @@ class GlobalFragment : Fragment() {
                     val jsonObject = JSONObject(response)
                     affected.text = jsonObject.getString("cases")
                     recovered.text = jsonObject.getString("recovered")
-                  //  tvCritical!!.text = jsonObject.getString("critical")
                     active.text = jsonObject.getString("active")
                    // tvTodayCases!!.text = jsonObject.getString("todayCases")
                     deaths.text = jsonObject.getString("deaths")
                   //  tvTodayDeaths!!.text = jsonObject.getString("todayDeaths")
-                 //  tvAffectedCountries!!.text = jsonObject.getString("affectedCountries")
+
 
                     piaChart()
 
 
                 } catch (e: JSONException) {
                     e.printStackTrace()
-                    //stoploader()
+
                 }
             }, Response.ErrorListener { error ->
 
-               // stoploader()
+
 
                 Toast.makeText(context, error.message, Toast.LENGTH_SHORT).show()
             })
@@ -78,9 +83,7 @@ class GlobalFragment : Fragment() {
         requestQueue.add(request)
     }
 
-//    fun goTrackCountries(view: View?) {
-//        startActivity(Intent(applicationContext, AffectedCountries::class.java))
-//    }
+
 
 
     private fun piaChart(){
@@ -91,11 +94,7 @@ class GlobalFragment : Fragment() {
         piechart.startAnimation()
     }
 
-//    private fun stoploader(){
-//        simpleArcLoader.stop()
-//        simpleArcLoader.visibility = View.GONE
-//        scrollView.visibility = View.VISIBLE
-//    }
+
 
 
 }

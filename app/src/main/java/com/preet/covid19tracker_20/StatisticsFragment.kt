@@ -49,12 +49,13 @@ class StatisticsFragment : Fragment() {
         global.setOnClickListener {
 
             navController.navigate(R.id.action_statisticsFragment_to_globalFragment)
+
         }
 
 
 
         stat_backbtn.setOnClickListener {
-            findNavController().navigateUp()
+           navController.navigate(R.id.action_statisticsFragment_to_dashBoardFragment)
         }
         parseJson()
     }

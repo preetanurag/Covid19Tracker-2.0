@@ -5,3 +5,5 @@ import androidx.navigation.fragment.findNavController
 
 val Fragment.navController
     get() = findNavController()
+
+
