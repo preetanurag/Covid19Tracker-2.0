@@ -40,6 +40,7 @@ class DashboardFragment : Fragment() {
         stat.setOnClickListener {
             navController.navigate(R.id.action_dashBoardFragment_to_statisticsFragment)
         }
+
     }
 
 }

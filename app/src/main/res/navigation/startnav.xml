@@ -80,6 +80,9 @@
         <action
             android:id="@+id/action_globalFragment_to_affectedCountriesFragment"
             app:destination="@id/affectedCountriesFragment" />
+        <action
+            android:id="@+id/action_globalFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
     </fragment>
     <fragment
         android:id="@+id/stateFragment"

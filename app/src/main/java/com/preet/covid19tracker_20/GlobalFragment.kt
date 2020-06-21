@@ -41,10 +41,10 @@ class GlobalFragment : Fragment() {
         moredeatils.setText("Track all Countries")
 
        india.setOnClickListener {
-           navController.navigate(R.id.action_globalFragment_to_statisticsFragment)
+          findNavController().navigateUp()
        }
         stat_backbtn.setOnClickListener {
-            findNavController().navigateUp()
+           navController.navigate(R.id.action_globalFragment_to_dashBoardFragment)
         }
         moredeatils.setOnClickListener {
             navController.navigate(R.id.action_globalFragment_to_affectedCountriesFragment)

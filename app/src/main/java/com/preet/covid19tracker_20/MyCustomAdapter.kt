@@ -33,7 +33,7 @@ class MyCustomAdapter(context: Context, private val countryModelsList: List<Coun
         val tvActive=countryModelsListFiltered[position].active
       //  totalcases.text=  "Total Cases-"+countryModelsListFiltered[position].cases
 
-        //  pieChart.addPieSlice(PieModel("Cases", totalcases.text.toString().toInt().toFloat(), Color.parseColor("#FFA726")))
+
 
         totalcases.text=countryModelsListFiltered[position].cases
         deaths.text=countryModelsListFiltered[position].deaths
@@ -42,6 +42,8 @@ class MyCustomAdapter(context: Context, private val countryModelsList: List<Coun
         active.text=countryModelsListFiltered[position].active
 
 
+
+        pieChart.addPieSlice(PieModel("Cases", totalcases.text.toString().toInt().toFloat(), Color.parseColor("#FFA726")))
         pieChart.addPieSlice(PieModel("Recoverd", recovered.toString().toInt().toFloat(), Color.parseColor("#66BB6A")))
         pieChart.addPieSlice(PieModel("Deaths", totaldeaths.toString().toInt().toFloat(), Color.parseColor("#EF5350")))
         pieChart.addPieSlice(PieModel("Active", tvActive.toString().toInt().toFloat(), Color.parseColor("#29B6F6")))
