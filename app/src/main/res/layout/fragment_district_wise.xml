@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#473F97"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".DistrictWiseFragment">
+
+    <TextView
+        android:id="@+id/txt_state_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:textColor="#FFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/graphikregular"
+        />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_state_name"
+
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="Confirmed Covid-19 Cases"
+        android:textColor="#FFF"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/districtRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/textView12"
+        android:layout_marginTop="10dp" />
+
+    <com.leo.simplearcloader.SimpleArcLoader
+        android:id="@+id/progressBar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:visibility="visible"
+        app:arc_margin="3dp"
+        app:arc_speed="medium"
+        app:arc_style="complete_arc"
+        app:arc_thickness="7dp">
+
+    </com.leo.simplearcloader.SimpleArcLoader>
+
+
+<!--    <com.airbnb.lottie.LottieAnimationView-->
+<!--        android:id="@+id/no_cases_animation"-->
+<!--        android:layout_width="336dp"-->
+<!--        android:layout_height="421dp"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:layout_marginTop="73dp"-->
+<!--        app:lottie_autoPlay="true"-->
+<!--        app:lottie_fileName="blank5.json"-->
+<!--        app:lottie_loop="true" />-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="No Cases"
+        android:layout_marginTop="5dp"
+        android:id="@+id/txt_no_cases"
+        android:layout_centerInParent="true"
+        android:textColor="#FFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/graphikregular"
+
+        />
+
+</RelativeLayout>

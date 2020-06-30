@@ -29,9 +29,12 @@ class MoreDetailsFragment : Fragment() {
         back_moredetails_btn.setOnClickListener {
             findNavController().navigateUp()
         }
-        state_wise_btn.setOnClickListener {
-            navController.navigate(R.id.action_moreDetailsFragment_to_stateFragment)
-        }
+//        state_wise_btn.setOnClickListener {
+//            navController.navigate(R.id.action_moreDetailsFragment_to_stateFragment)
+//        }
+//        dist_button.setOnClickListener {
+//            navController.navigate(R.id.action_moreDetailsFragment_to_districtWiseFragment)
+//        }
 
     }
 

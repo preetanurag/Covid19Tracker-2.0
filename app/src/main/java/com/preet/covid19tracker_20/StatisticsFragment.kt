@@ -44,7 +44,7 @@ class StatisticsFragment : Fragment() {
         super.onResume()
 
         moredeatils.setOnClickListener {
-            navController.navigate(R.id.action_statisticsFragment_to_moreDetailsFragment)
+            navController.navigate(R.id.action_statisticsFragment_to_stateFragment)
         }
         global.setOnClickListener {
 
@@ -55,7 +55,7 @@ class StatisticsFragment : Fragment() {
 
 
         stat_backbtn.setOnClickListener {
-           navController.navigate(R.id.action_statisticsFragment_to_dashBoardFragment)
+           findNavController().navigateUp()
         }
         parseJson()
     }

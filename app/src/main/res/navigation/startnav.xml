@@ -52,22 +52,13 @@
         android:label="fragment_statistics"
         tools:layout="@layout/fragment_statistics" >
         <action
-            android:id="@+id/action_statisticsFragment_to_moreDetailsFragment"
-            app:destination="@id/moreDetailsFragment" />
-        <action
             android:id="@+id/action_statisticsFragment_to_globalFragment"
             app:destination="@id/globalFragment" />
         <action
             android:id="@+id/action_statisticsFragment_to_dashBoardFragment"
             app:destination="@id/dashBoardFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/moreDetailsFragment"
-        android:name="com.preet.covid19tracker_20.MoreDetailsFragment"
-        android:label="fragment_more_details"
-        tools:layout="@layout/fragment_more_details" >
         <action
-            android:id="@+id/action_moreDetailsFragment_to_stateFragment"
+            android:id="@+id/action_statisticsFragment_to_stateFragment"
             app:destination="@id/stateFragment" />
     </fragment>
     <fragment
